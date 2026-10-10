@@ -11,7 +11,7 @@ const Layout = ({ children }: Props) => {
   return (
     <Auth>
       <Header />
-      <div className="flex-1 min-h-0 flex flex-col md:flex-row gap-4 md:gap-6 pb-4 md:pb-6 overflow-y-auto md:overflow-hidden no-scrollbar">
+      <div className="flex flex-col md:flex-row vh-minus-100 overflow-y-scroll no-scrollbar">
         <SideBar />
         {children}
       </div>
