@@ -19,8 +19,13 @@ const SelectedModels: React.FC = () => {
     setMounted(true)
   }, [])
 
+  const hasModels = aiModal.length > 0
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 pb-6">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 pb-4">
+      {mounted && auth.isAuthenticated && !hasModels && (
+        <p className="eyebrow col-span-full py-16 text-center">Select at least one model to start</p>
+      )}
       {mounted && auth.isAuthenticated &&
         aiModal.map((ele) => <ResponseSection aiModal={ele} prompt={aiPrompt.prompt} key={ele.id} />)}
     </div>

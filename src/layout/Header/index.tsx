@@ -1,9 +1,10 @@
 "use client"
 import * as React from 'react';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 // custom component
-import Image from '@commonElements/Image';
-import Checkbox from '@commonElements/Checkbox';
+import Button from '@commonElements/Button';
 
 const Header: React.FC = () => {
     // state management for dark mode
@@ -23,29 +24,21 @@ const Header: React.FC = () => {
     }
 
     return (
-        <div className="flex justify-between mb-6">
-            <Link href='/' className='flex items-center py-4'>
-                <h4 className="text-2xl font-bold ml-2 text-gradient">AI Playground</h4>
+        <header className="h-16 shrink-0 flex items-center justify-between border-b border-line/10 mb-4 md:mb-6">
+            <Link href='/' className='flex items-center gap-2.5'>
+                <span className="grid place-items-center h-8 w-8 rounded-lg bg-accent text-accent-ink font-mono font-bold text-sm">M</span>
+                <span className="text-lg font-semibold tracking-tight">Model<span className="text-muted">Arena</span></span>
             </Link>
-            <div className="flex items-center ">
-                <label className="swap swap-rotate">
-                    {/* change between dark and light mode */}
-                    <Checkbox
-                        attrBtn={{
-                            className: "theme-controller",
-                            value: "light",
-                            onClick: changeThemeMode,
-                        }}
-
-                    />
-
-                    <span className='swap-off '>🌙</span> {/* dark mode */}
-
-                    <span className='swap-on'>☀️</span> {/* light mode */}
-
-                </label>
-            </div>
-        </div >
+            <Button
+                attrBtn={{
+                    onClick: changeThemeMode,
+                    'aria-label': darkMode ? 'Switch to light mode' : 'Switch to dark mode',
+                    className: "h-9 w-9 grid place-items-center rounded-lg hairline text-muted hover:text-ink hover:bg-raised",
+                }}
+            >
+                <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+            </Button>
+        </header>
     )
 }
 
