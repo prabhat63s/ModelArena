@@ -117,7 +117,7 @@ const AuthLayout: React.FC<Props> = ({ children }: Props) => {
                 </div>
             </dialog >
 
-            <div id={divId} className="mx-auto px-4 md:px-8 h-screen flex flex-col max-w-6xl bg-bg text-ink">
+            <div id={divId} className="mx-auto px-4 md:px-10 h-screen flex flex-col w-full bg-bg text-ink">
                 {children}
             </div>
         </>
