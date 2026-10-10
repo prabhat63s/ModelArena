@@ -10,9 +10,9 @@ const Layout = ({ children }: Props) => {
   return (
     <Auth>
       <Header />
-      <div className="flex flex-col vh-minus-100 overflow-y-scroll no-scrollbar">
+      <main className="flex-1 min-h-0 flex flex-col overflow-y-auto no-scrollbar">
         {children}
-      </div>
+      </main>
     </Auth>
   )
 }
