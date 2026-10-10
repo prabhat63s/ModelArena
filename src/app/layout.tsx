@@ -7,7 +7,7 @@ import Layout from "@/layout";
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Multi LMM Playground",
+  title: "ModelArena",
   description: "Open Graph setting",
 };
 
