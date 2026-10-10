@@ -8,6 +8,7 @@ import { getAiPrompt, updatePromptText } from '@redux/reducers/AiPromptReducer';
 import Image from '@commonElements/Image';
 import Input from '@commonElements/Input';
 import Button from '@commonElements/Button';
+import ModelPicker from '@components/ModelPicker';
 
 const SearchSection: React.FC = () => {
 
@@ -31,19 +32,20 @@ const SearchSection: React.FC = () => {
     return (
         <div className="relative group mb-6">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600/30 to-blue-600/30 rounded-full opacity-0 group-hover:opacity-100 transition duration-500 blur-lg"></div>
-            <div className="relative">
+            <div className="relative flex items-center gap-2 pl-3 pr-2 py-2 border border-white/10 rounded-full bg-[#0a0a0a]/90 focus-within:ring-2 focus-within:ring-purple-500/50 transition-all shadow-xl">
+                <ModelPicker />
                 <Input
                     attrBtn={{
                         type: "text",
                         placeholder: "Ask anything...",
-                        className: "w-full pl-6 pr-16 py-5 text-lg border border-white/10 rounded-full bg-[#0a0a0a]/90 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all shadow-xl",
+                        className: "flex-1 min-w-0 bg-transparent px-3 py-3 text-lg text-white placeholder-gray-500 focus:outline-none",
                         value: mounted ? newPrompt : '',
                         onChange: onHandleChangeText,
                     }}
                 />
                 <Button
                     attrBtn={{
-                        className: "absolute right-2 top-1/2 -translate-y-1/2 p-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full hover:scale-105 transition-transform duration-200 shadow-lg flex items-center justify-center border-0",
+                        className: "p-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full hover:scale-105 transition-transform duration-200 shadow-lg flex items-center justify-center border-0 shrink-0",
                         onClick: () => dispatch(updatePromptText(newPrompt)),
                     }}
                 >

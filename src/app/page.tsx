@@ -11,7 +11,7 @@ import { faImage, faCode, faCommentDots, faWandMagicSparkles } from '@fortawesom
 const Home: NextPage = () => {
   return (
     <>
-      <div className="relative flex-1 w-full h-full flex flex-col items-center justify-center md:ml-6 overflow-hidden">
+      <div className="relative flex-1 w-full h-full flex flex-col items-center justify-center overflow-hidden">
 
         {/* Decorative Background Elements */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl mix-blend-screen animate-pulse-slow pointer-events-none"></div>
