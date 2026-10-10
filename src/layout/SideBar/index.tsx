@@ -66,15 +66,15 @@ const Sidebar: React.FC = () => {
   const selectedCount = aiModal.length
 
   return (
-    <aside className="w-full md:w-64 shrink-0 md:overflow-y-auto no-scrollbar">
+    <div className="w-full md:w-64 mb-4 md:mb-0 md:mr-6 flex-shrink-0">
       {/* Mobile dropdown button */}
-      <div className="md:hidden w-full">
+      <div className="md:hidden w-full mb-4">
         <button
           onClick={toggleDropdown}
-          className="w-full flex justify-between items-center px-4 py-3 text-sm font-medium bg-surface hairline rounded-lg"
+          className="w-full flex justify-between items-center p-4 text-sm font-medium text-white glass-strong rounded-2xl shadow-lg border border-white/10"
         >
-          <span>
-            Models <span className="font-mono text-muted">{mounted ? `${selectedCount}/${allAiModel.length}` : ""}</span>
+          <span className="text-gradient font-bold">
+            Select AI Model {mounted ? `(${selectedCount} selected)` : ""}
           </span>
           <svg
             className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`}
@@ -89,14 +89,13 @@ const Sidebar: React.FC = () => {
       </div>
 
       {/* Desktop title (hidden on mobile) */}
-      <div className="hidden md:flex items-baseline justify-between mb-3 px-1">
-        <h3 className="eyebrow">Models</h3>
-        <span className="eyebrow">{mounted ? `${selectedCount}/${allAiModel.length}` : ""}</span>
-      </div>
+      <h3 className="mb-6 font-bold text-xl hidden md:block">
+        <span className="text-gradient">Select AI Model</span>
+      </h3>
 
       {/* Model list - shown as dropdown on mobile, always visible on desktop */}
       <ul
-        className={`${isDropdownOpen ? "block" : "hidden"} md:block w-full mt-2 md:mt-0 bg-surface hairline rounded-lg overflow-hidden`}
+        className={`${isDropdownOpen ? "block" : "hidden"} md:block w-full text-sm font-medium text-gray-200 glass-strong rounded-3xl shadow-xl border border-white/5 overflow-hidden`}
       >
         {mounted ? (
           <>
@@ -107,11 +106,11 @@ const Sidebar: React.FC = () => {
           </>
         ) : (
           <div className="p-4 flex justify-center">
-            <span className="loading loading-spinner loading-sm text-muted"></span>
+            <span className="loading loading-spinner loading-sm text-primary/50"></span>
           </div>
         )}
       </ul>
-    </aside>
+    </div>
   )
 }
 

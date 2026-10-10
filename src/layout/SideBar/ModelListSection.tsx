@@ -25,22 +25,24 @@ const ModelListSection: React.FC<Props> = (props: Props) => {
                 const isSelected = aiModal.some((e) => e.id === ele.id);
                 return (
                     <li
-                        className="w-full border-b border-line/10 last:border-0 hover:bg-raised transition-colors"
+                        className={`w-full border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors duration-200`}
                         key={ele.id}
                     >
-                        <div className="flex items-center gap-3 px-4 py-3 cursor-pointer" onClick={() => onHandleClick(ele.id)}>
-                            <Image
-                                src={ele.image}
-                                alt={ele.name}
-                                attrBtn={{
-                                    width: 22,
-                                    height: 22,
-                                    className: "rounded-md shrink-0"
-                                }}
-                            />
+                        <div className="flex items-center p-4 cursor-pointer" onClick={() => onHandleClick(ele.id)}>
+                            <div className="flex-shrink-0 mr-3">
+                                <Image
+                                    src={ele.image}
+                                    alt={ele.name}
+                                    attrBtn={{
+                                        width: 24,
+                                        height: 24,
+                                        className: "rounded-full"
+                                    }}
+                                />
+                            </div>
                             <label
                                 htmlFor={`${ele.id}-select`}
-                                className={`flex-1 text-sm cursor-pointer select-none ${isSelected ? 'text-ink font-medium' : 'text-muted'}`}
+                                className="w-full text-sm font-medium text-gray-200 cursor-pointer select-none flex-grow"
                                 onClick={(e) => e.preventDefault()} // Prevent double toggle since parent div has onClick
                             >
                                 {ele.name}
@@ -49,9 +51,8 @@ const ModelListSection: React.FC<Props> = (props: Props) => {
                                 attrBtn={{
                                     id: `${ele.id}-select`,
                                     checked: isSelected,
-                                    className: "h-4 w-4 accent-accent cursor-pointer",
+                                    className: "checkbox checkbox-primary checkbox-sm border-white/20",
                                     onChange: handleCheckboxChange,
-                                    onClick: (e: React.MouseEvent) => e.stopPropagation(),
                                     value: ele.id,
                                 }}
                             />
