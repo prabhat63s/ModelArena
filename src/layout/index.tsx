@@ -1,6 +1,5 @@
 import type React from "react"
 import Header from "./Header"
-import SideBar from "./SideBar"
 import Auth from "./Auth"
 
 type Props = Readonly<{
@@ -11,8 +10,7 @@ const Layout = ({ children }: Props) => {
   return (
     <Auth>
       <Header />
-      <div className="flex flex-col md:flex-row vh-minus-100 overflow-y-scroll no-scrollbar">
-        <SideBar />
+      <div className="flex flex-col vh-minus-100 overflow-y-scroll no-scrollbar">
         {children}
       </div>
     </Auth>
