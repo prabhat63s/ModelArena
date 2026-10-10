@@ -31,7 +31,7 @@ const Home: NextPage = () => {
       <section className="relative pt-16 pb-14 md:pt-24">
         <div className="dot-grid absolute inset-x-0 -top-px h-96 pointer-events-none" aria-hidden></div>
 
-        <div className="relative max-w-3xl">
+        <div className="relative">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]">
             Same prompt, different models.
             <span className="block text-muted">See which one answers best.</span>
