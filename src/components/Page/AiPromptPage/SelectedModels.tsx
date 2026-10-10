@@ -20,7 +20,10 @@ const SelectedModels: React.FC = () => {
   }, [])
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 pb-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
+      {mounted && auth.isAuthenticated && aiModal.length === 0 && (
+        <p className="col-span-full py-12 text-center text-muted">Choose at least one model to see answers.</p>
+      )}
       {mounted && auth.isAuthenticated &&
         aiModal.map((ele) => <ResponseSection aiModal={ele} prompt={aiPrompt.prompt} key={ele.id} />)}
     </div>

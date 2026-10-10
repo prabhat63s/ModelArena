@@ -89,29 +89,29 @@ const ModelPicker: React.FC<Props> = ({ openUp = false }: Props) => {
         : `${selectedCount} models`
 
   return (
-    <div ref={rootRef} className="relative shrink-0">
+    <div ref={rootRef} className="relative shrink-0 flex">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
-        className="flex items-center gap-2 h-11 pl-3 pr-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-sm font-medium text-gray-200 transition-colors cursor-pointer"
+        className="flex items-center gap-2 px-3.5 text-sm text-ink border-r border-line/15 rounded-l-lg hover:bg-raised transition-colors cursor-pointer"
       >
         {mounted && selectedCount > 0 && (
-          <span className="flex -space-x-2">
+          <span className="flex -space-x-1.5">
             {aiModal.slice(0, 3).map((m) => (
               <Image
                 key={m.id}
                 src={m.image}
                 alt={m.name}
-                attrBtn={{ width: 20, height: 20, className: "rounded-full border border-[#0a0a0a] bg-black" }}
+                attrBtn={{ width: 18, height: 18, className: "rounded-full ring-2 ring-surface bg-black" }}
               />
             ))}
           </span>
         )}
-        <span className="max-w-32 truncate">{label}</span>
+        <span className="max-w-28 sm:max-w-40 truncate">{label}</span>
         <svg
-          className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          className={`w-3 h-3 text-muted transition-transform duration-150 ${isOpen ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -125,7 +125,7 @@ const ModelPicker: React.FC<Props> = ({ openUp = false }: Props) => {
         <ul
           role="listbox"
           aria-multiselectable="true"
-          className={`absolute left-0 ${openUp ? "bottom-full mb-3" : "top-full mt-3"} z-30 w-72 max-w-[85vw] text-sm font-medium text-gray-200 bg-[#141414] rounded-2xl shadow-2xl border border-white/10 overflow-hidden`}
+          className={`absolute left-0 ${openUp ? "bottom-full mb-2" : "top-full mt-2"} z-30 w-72 max-w-[85vw] text-sm bg-surface rounded-lg shadow-xl border border-line/15 overflow-hidden`}
         >
           {/* select all check-box */}
           <SelectAllSection isSelectedAll={isAllSelected} onHandleChange={onHandleSelectedAll} />

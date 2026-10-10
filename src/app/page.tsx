@@ -1,61 +1,91 @@
 // default library
 import type { NextPage } from "next"
+import Image from "next/image"
+
+// config
+import { allAiModel } from "@config/aiModelData"
 
 // search page
 import SearchSection from "@components/Page/HomePage/SearchSection"
+import Examples from "@components/Page/HomePage/Examples"
 
-// icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImage, faCode, faCommentDots, faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons'
+const STEPS = [
+  {
+    title: "Choose your models",
+    text: "Open the selector in the prompt bar and tick one model or all of them.",
+  },
+  {
+    title: "Send one prompt",
+    text: "The same message goes to every selected model at the same time.",
+  },
+  {
+    title: "Compare the answers",
+    text: "Each model replies in its own card with its token count. Continue the chat with any one of them.",
+  },
+]
 
 const Home: NextPage = () => {
   return (
-    <>
-      <div className="relative flex-1 w-full h-full flex flex-col items-center justify-center overflow-hidden">
+    <div className="flex-1">
+      {/* hero */}
+      <section className="relative pt-16 pb-14 md:pt-24">
+        <div className="dot-grid absolute inset-x-0 -top-px h-96 pointer-events-none" aria-hidden></div>
 
-        {/* Decorative Background Elements */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl mix-blend-screen animate-pulse-slow pointer-events-none"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl mix-blend-screen animate-pulse-slow animation-delay-2000 pointer-events-none"></div>
+        <div className="relative max-w-3xl">
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]">
+            Same prompt, different models.
+            <span className="block text-muted">See which one answers best.</span>
+          </h1>
 
-        {/* Floating Icons */}
-        <div className="absolute top-20 left-[10%] text-white/10 animate-float pointer-events-none hidden md:block">
-          <FontAwesomeIcon icon={faImage} size="4x" />
-        </div>
-        <div className="absolute bottom-32 right-[10%] text-white/10 animate-float animation-delay-2000 pointer-events-none hidden md:block">
-          <FontAwesomeIcon icon={faCode} size="4x" />
-        </div>
-        <div className="absolute top-32 right-[15%] text-white/10 animate-float animation-delay-4000 pointer-events-none hidden md:block">
-          <FontAwesomeIcon icon={faCommentDots} size="4x" />
-        </div>
-        <div className="absolute bottom-20 left-[15%] text-white/10 animate-float animation-delay-2000 pointer-events-none hidden md:block">
-          <FontAwesomeIcon icon={faWandMagicSparkles} size="4x" />
-        </div>
-
-        <div className="z-10 w-full max-w-4xl px-4 flex flex-col items-center">
-          <h2 className="text-5xl md:text-7xl font-bold text-center mb-6 tracking-tight leading-tight">
-            What would you <br className="hidden md:block" />
-            <span className="text-gradient">want to know?</span>
-          </h2>
-
-          <p className="text-center text-gray-400 mb-12 text-lg md:text-xl max-w-2xl leading-relaxed">
-            Unleash the power of multi-modal AI. Ask questions, generate code, create images, and explore new possibilities.
+          <p className="mt-5 max-w-xl text-muted leading-relaxed">
+            ModelArena is a playground for running one prompt against several open-source language models
+            at once, so you can compare their answers and token usage before choosing one to build with.
           </p>
 
-          <div className="w-full max-w-2xl relative z-20">
+          <div className="mt-8">
             <SearchSection />
-          </div>
-
-          {/* Quick Suggestions */}
-          <div className="mt-10 flex flex-wrap justify-center gap-3 opacity-0 animate-[fadeIn_1s_ease-in_forwards] animation-delay-500" style={{ animationFillMode: 'forwards' }}>
-            {['Generate a React component', 'Explain Quantum Physics', 'Write a poem about AI', 'Debug this code', 'Create a logo'].map((tag) => (
-              <span key={tag} className="px-5 py-2.5 rounded-full bg-white/5 border border-white/5 text-sm text-gray-400 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all cursor-pointer backdrop-blur-sm">
-                {tag}
-              </span>
-            ))}
+            <Examples />
           </div>
         </div>
-      </div>
-    </>
+      </section>
+
+      {/* models */}
+      <section className="py-10 border-t border-line/10">
+        <div className="flex items-baseline justify-between mb-4">
+          <h2 className="font-medium">Available models</h2>
+          <span className="text-sm text-muted">{allAiModel.length} models via Hugging Face</span>
+        </div>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line/10 border border-line/10 rounded-lg overflow-hidden">
+          {allAiModel.map((m) => (
+            <li key={m.id} className="bg-bg p-4">
+              <Image src={m.image} alt="" width={24} height={24} className="rounded-full mb-3" />
+              <p className="font-medium">{m.name}</p>
+              <p className="mt-0.5 text-xs text-muted break-all">{m.model}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* how it works */}
+      <section id="how-it-works" className="py-10 border-t border-line/10 scroll-mt-14">
+        <h2 className="font-medium mb-4">How it works</h2>
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-px bg-line/10 border border-line/10 rounded-lg overflow-hidden">
+          {STEPS.map((step, i) => (
+            <li key={step.title} className="bg-bg p-5">
+              <span className="text-sm text-accent tabular-nums">0{i + 1}</span>
+              <p className="mt-2 font-medium">{step.title}</p>
+              <p className="mt-1 text-sm text-muted leading-relaxed">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* footer */}
+      <footer className="py-8 border-t border-line/10 text-sm text-muted flex flex-wrap justify-between gap-2">
+        <span>ModelArena</span>
+        <span>Built with Next.js and the Hugging Face Inference API</span>
+      </footer>
+    </div>
   )
 }
 

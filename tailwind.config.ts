@@ -1,17 +1,25 @@
 import type { Config } from "tailwindcss";
 
+const token = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
+
 export default {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    // "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    // "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    // "./src/layout/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        bg: token("bg"),
+        surface: token("surface"),
+        raised: token("raised"),
+        line: token("line"),
+        ink: token("ink"),
+        muted: token("muted"),
+        danger: token("danger"),
+        accent: token("accent"),
+      },
+      fontFamily: {
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
     },
   },
@@ -20,6 +28,6 @@ export default {
     require('daisyui'),
   ],
   daisyui: {
-    themes: ["light", "dark",],
+    themes: ["dark"],
   },
 } satisfies Config;

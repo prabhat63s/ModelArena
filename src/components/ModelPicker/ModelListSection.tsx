@@ -25,24 +25,24 @@ const ModelListSection: React.FC<Props> = (props: Props) => {
                 const isSelected = aiModal.some((e) => e.id === ele.id);
                 return (
                     <li
-                        className={`w-full border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors duration-200`}
+                        className={`w-full border-b border-line/10 last:border-0 hover:bg-raised transition-colors`}
                         key={ele.id}
                     >
-                        <div className="flex items-center p-4 cursor-pointer" onClick={() => onHandleClick(ele.id)}>
+                        <div className="flex items-center px-4 py-2.5 cursor-pointer" onClick={() => onHandleClick(ele.id)}>
                             <div className="flex-shrink-0 mr-3">
                                 <Image
                                     src={ele.image}
                                     alt={ele.name}
                                     attrBtn={{
-                                        width: 24,
-                                        height: 24,
+                                        width: 20,
+                                        height: 20,
                                         className: "rounded-full"
                                     }}
                                 />
                             </div>
                             <label
                                 htmlFor={`${ele.id}-select`}
-                                className="w-full text-sm font-medium text-gray-200 cursor-pointer select-none flex-grow"
+                                className="w-full text-sm text-ink cursor-pointer select-none flex-grow"
                                 onClick={(e) => e.preventDefault()} // Prevent double toggle since parent div has onClick
                             >
                                 {ele.name}
@@ -51,7 +51,7 @@ const ModelListSection: React.FC<Props> = (props: Props) => {
                                 attrBtn={{
                                     id: `${ele.id}-select`,
                                     checked: isSelected,
-                                    className: "checkbox checkbox-primary checkbox-sm border-white/20",
+                                    className: "h-4 w-4 accent-ink cursor-pointer",
                                     onChange: handleCheckboxChange,
                                     value: ele.id,
                                 }}
