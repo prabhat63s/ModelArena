@@ -17,10 +17,7 @@ type Props = Readonly<{
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: `try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}` }} />
-      </head>
+    <html lang="en" className="dark">
       <body className={`${sans.variable} font-sans antialiased`} suppressHydrationWarning>
         <ReduxProvider>
           <Layout>
