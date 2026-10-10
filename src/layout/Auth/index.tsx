@@ -76,12 +76,11 @@ const AuthLayout: React.FC<Props> = ({ children }: Props) => {
     return (
         <>
             <dialog id={modelName} className='modal' >
-                <div className="modal-box w-11/12 max-w-md bg-surface text-ink hairline rounded-2xl overflow-y-auto no-scrollbar">
+                <div className="modal-box w-11/12 max-w-md bg-surface text-ink hairline rounded-xl overflow-y-auto no-scrollbar">
                     <div className="flex flex-col justify-center items-center gap-5">
-                        <span className="grid place-items-center h-10 w-10 rounded-lg bg-accent text-accent-ink font-mono font-bold">M</span>
                         <div className="text-center">
-                            <h2 className="text-xl font-semibold tracking-tight">Enter the arena</h2>
-                            <p className="text-sm text-muted mt-1">Enter your access code to continue.</p>
+                            <h2 className="text-xl font-semibold tracking-tight">Sign in</h2>
+                            <p className="text-sm text-muted mt-1">Enter today's access code to continue.</p>
                         </div>
                         <div className="relative w-full">
                             <Input

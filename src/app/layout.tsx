@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import ReduxProvider from '@/redux/redux-provider';
 import Layout from "@/layout";
 
-const sans = Space_Grotesk({ subsets: ["latin"], variable: "--font-sans" });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "ModelArena",
@@ -18,8 +17,11 @@ type Props = Readonly<{
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <html lang="en" className="dark">
-      <body className={`${sans.variable} ${mono.variable} font-sans antialiased`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}` }} />
+      </head>
+      <body className={`${sans.variable} font-sans antialiased`} suppressHydrationWarning>
         <ReduxProvider>
           <Layout>
             {children}

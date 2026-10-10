@@ -13,7 +13,7 @@ const SelectAllSection: React.FC<Props> = (props: Props) => {
     return (
         <li className="w-full border-b border-line/10 hover:bg-raised transition-colors">
             <div className="flex items-center justify-between px-4 py-3 cursor-pointer" onClick={onHandleChange}>
-                <label htmlFor="select-all-checkbox" className="eyebrow cursor-pointer select-none" onClick={(e) => e.preventDefault()}>Select all</label>
+                <label htmlFor="select-all-checkbox" className="text-sm font-medium cursor-pointer select-none" onClick={(e) => e.preventDefault()}>Select all</label>
                 <Checkbox
                     attrBtn={{
                         id: "select-all-checkbox",
