@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import ReduxProvider from '@/redux/redux-provider';
 import Layout from "@/layout";
 
-const outfit = Outfit({ subsets: ["latin"] });
+const sans = Space_Grotesk({ subsets: ["latin"], variable: "--font-sans" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
   title: "ModelArena",
-  description: "Open Graph setting",
+  description: "Send one prompt to many AI models and compare their answers side by side.",
 };
 
 type Props = Readonly<{
@@ -18,7 +19,7 @@ type Props = Readonly<{
 const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en" className="dark">
-      <body className={`${outfit.className} antialiased`} suppressHydrationWarning>
+      <body className={`${sans.variable} ${mono.variable} font-sans antialiased`} suppressHydrationWarning>
         <ReduxProvider>
           <Layout>
             {children}

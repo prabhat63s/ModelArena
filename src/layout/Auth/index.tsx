@@ -16,8 +16,8 @@ type Props = Readonly<{
 }>
 
 const divClassName = ["pointer-events-none", "blur-sm"];
-const borderRed = ["border-red-800", "dark:border-red-500", "ring-red-800", "dark:ring-red-500"];
-const borderGrey = ["border-gray-300", "dark:border-gray-600", "ring-gray-300", "dark:ring-gray-600"];
+const borderRed = ["border-danger", "ring-danger"];
+const borderGrey = ["border-line/20", "ring-accent"];
 
 const AuthLayout: React.FC<Props> = ({ children }: Props) => {
     const modelName = 'auth-model';
@@ -76,23 +76,27 @@ const AuthLayout: React.FC<Props> = ({ children }: Props) => {
     return (
         <>
             <dialog id={modelName} className='modal' >
-                <div className="modal-box w-11/12 max-w-xl overflow-y-scroll no-scrollbar">
+                <div className="modal-box w-11/12 max-w-md bg-surface text-ink hairline rounded-2xl overflow-y-auto no-scrollbar">
                     <div className="flex flex-col justify-center items-center gap-5">
-                        <h2> Enter Password </h2>
-                        <div className="relative w-3/4">
+                        <span className="grid place-items-center h-10 w-10 rounded-lg bg-accent text-accent-ink font-mono font-bold">M</span>
+                        <div className="text-center">
+                            <h2 className="text-xl font-semibold tracking-tight">Enter the arena</h2>
+                            <p className="text-sm text-muted mt-1">Enter your access code to continue.</p>
+                        </div>
+                        <div className="relative w-full">
                             <Input
                                 attrBtn={{
                                     type: showPassword ? "text" : "password",
                                     placeholder: "Enter Password",
                                     onChange: validateNumber,
                                     id: passwordId,
-                                    className: `w-full px-5 py-4 border rounded-full bg-gray-50 dark:bg-[#141313] focus:outline-none focus:ring-2 `,
+                                    className: `w-full px-4 py-3 border rounded-lg bg-raised text-ink placeholder:text-muted focus:outline-none focus:ring-2 `,
                                 }}
                             />
 
                             <Button
                                 attrBtn={{
-                                    className: "absolute right-0 top-0 bottom-0 px-2.5 py-2 rounded-full m-2  h-auto min-h-[50%] focus:ring-0",
+                                    className: "absolute right-0 top-0 bottom-0 px-4 text-muted hover:text-ink",
                                     onClick: () => setShowPassword(!showPassword)
                                 }}
                             >
@@ -101,12 +105,12 @@ const AuthLayout: React.FC<Props> = ({ children }: Props) => {
                         </div>
 
                         {(auth.errorMessage.length > 0 && password.length > 0 && !isChange) && (
-                            <span className='text-red-800 dark:text-red-500'>{auth.errorMessage}</span>
+                            <span className='text-danger text-sm'>{auth.errorMessage}</span>
                         )}
 
                         <Button
                             attrBtn={{
-                                className: 'btn btn-primary dark:btn-neutral h-8 ',
+                                className: 'btn-accent w-full py-3 text-sm',
                                 onClick: handleSubmit
                             }}
                         >
@@ -117,7 +121,7 @@ const AuthLayout: React.FC<Props> = ({ children }: Props) => {
                 </div>
             </dialog >
 
-            <div id={divId} className={`controller mx-auto px-4 h-screen bg-gray-100 text-gray-900 dark:bg-[#1E1E1E] dark:text-white`}>
+            <div id={divId} className="mx-auto px-4 md:px-6 h-screen flex flex-col max-w-[1600px] bg-bg text-ink">
                 {children}
             </div>
         </>
