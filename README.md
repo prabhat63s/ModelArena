@@ -1,7 +1,7 @@
-# LMM Playground
+# ModelArena
 
 ## Project Overview
-The **Multi LMM Playground** is an innovative web application built using **Next.js** and **TypeScript**, designed to explore and evaluate large language models (LMMs). This platform allows users to interact with various AI models, analyze their inference times, and estimate their associated costs. By integrating with **Hugging Face APIs**, the Multi LMM Playground empowers developers to test and compare AI models seamlessly, ensuring they can select the most suitable models for their use cases.
+The **ModelArena** is an innovative web application built using **Next.js** and **TypeScript**, designed to explore and evaluate large language models (LMMs). This platform allows users to interact with various AI models, analyze their inference times, and estimate their associated costs. By integrating with **Hugging Face APIs**, the ModelArena empowers developers to test and compare AI models seamlessly, ensuring they can select the most suitable models for their use cases.
 
 The project also leverages **TailwindCSS** for modern styling and **Redux** for robust state management.
 
@@ -9,7 +9,7 @@ The project also leverages **TailwindCSS** for modern styling and **Redux** for 
 
 ## Research Goals and Purpose
 
-The Multi LMM Playground is more than just a demo application—it's a **research tool** aimed at solving critical challenges in AI development and integration:
+The ModelArena is more than just a demo application—it's a **research tool** aimed at solving critical challenges in AI development and integration:
 
 ### **Key Objectives**
 1. **Comparing Multiple Models**  
@@ -108,7 +108,7 @@ Ensure you have the following installed:
 
    ```bash
    git clone <repository-url>
-   cd multi-lmm-playground
+   cd ModelArena
    ```
 
 2.	Install dependencies:
@@ -171,7 +171,7 @@ To add a new AI model:
 
 ### Research and Development Focus
 
-The Multi LMM Playground is specifically designed for:
+The ModelArena is specifically designed for:
 	1.	Evaluating Model Suitability
 	•	Identify which models excel in specific domains, such as conversational AI, summarization, or question answering.
 	•	Compare models based on speed, accuracy, and cost.
