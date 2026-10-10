@@ -28,11 +28,11 @@ const SearchSection: React.FC = () => {
     }
 
     return (
-        <div className="flex items-center gap-2 p-2 bg-surface hairline rounded-xl focus-within:border-accent/60 transition-colors">
+        <div className="flex items-center gap-2 p-2 bg-surface hairline rounded-lg focus-within:border-accent/60 transition-colors">
             <Input
                 attrBtn={{
                     type: "text",
-                    placeholder: "Ask anything...",
+                    placeholder: "Type a prompt",
                     'aria-label': "Prompt",
                     className: "flex-1 min-w-0 bg-transparent px-3 py-3 text-base placeholder:text-muted focus:outline-none",
                     value: mounted ? newPrompt : '',
@@ -44,12 +44,11 @@ const SearchSection: React.FC = () => {
             />
             <Button
                 attrBtn={{
-                    className: "btn-accent px-4 py-3 text-sm shrink-0",
+                    className: "btn-accent px-4 py-2.5 text-sm shrink-0",
                     onClick: () => dispatch(updatePromptText(newPrompt)),
                 }}
             >
-                Run
-                <span aria-hidden>→</span>
+                Compare
             </Button>
         </div>
     )

@@ -96,7 +96,7 @@ const ChatMoreModal: React.FC<Props> = (props: Props) => {
 
     return (
         <>
-            <div className="modal-box w-11/12 max-w-4xl h-[80vh] overflow-hidden flex flex-col p-0 bg-surface text-ink hairline shadow-2xl rounded-2xl">
+            <div className="modal-box w-11/12 max-w-4xl h-[80vh] overflow-hidden flex flex-col p-0 bg-surface text-ink hairline shadow-2xl rounded-xl">
                 {/* Header */}
                 <div className="flex items-center justify-between px-4 md:px-6 py-4 border-b border-line/10">
                     <div className='flex items-center gap-3'>
@@ -137,7 +137,7 @@ const ChatMoreModal: React.FC<Props> = (props: Props) => {
                             <div key={i} className={`flex w-full ${isUser ? "justify-end" : "justify-start"}`}>
                                 <div className="max-w-[85%]">
                                     <p className={`eyebrow mb-1.5 ${isUser ? "text-right" : ""}`}>{isUser ? "You" : currentAiModel.name}</p>
-                                    <div className={`px-4 py-3 rounded-xl text-sm leading-relaxed ${isUser
+                                    <div className={`px-4 py-3 rounded-lg text-sm leading-relaxed ${isUser
                                         ? "bg-accent text-accent-ink"
                                         : "bg-raised"
                                         }`}>
@@ -153,7 +153,7 @@ const ChatMoreModal: React.FC<Props> = (props: Props) => {
 
                     {(loading || error) && (
                         <div className="flex w-full justify-start">
-                            <div className="px-4 py-3 rounded-xl bg-raised">
+                            <div className="px-4 py-3 rounded-lg bg-raised">
                                 {loading && <span className="loading loading-dots loading-sm text-muted"></span>}
                                 {error && <p className='text-danger font-medium text-sm'>{error}</p>}
                             </div>
@@ -163,7 +163,7 @@ const ChatMoreModal: React.FC<Props> = (props: Props) => {
 
                 {/* Input Area */}
                 <div className='p-4 md:p-6 border-t border-line/10'>
-                    <div className="flex items-center gap-2 p-2 bg-bg hairline rounded-xl focus-within:border-accent/60 transition-colors">
+                    <div className="flex items-center gap-2 p-2 bg-bg hairline rounded-lg focus-within:border-accent/60 transition-colors">
                         <Input
                             attrBtn={{
                                 type: "text",
@@ -188,7 +188,6 @@ const ChatMoreModal: React.FC<Props> = (props: Props) => {
                             }}
                         >
                             Send
-                            <span aria-hidden>→</span>
                         </Button>
                     </div>
                 </div>

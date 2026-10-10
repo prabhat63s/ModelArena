@@ -71,7 +71,7 @@ const Sidebar: React.FC = () => {
       <div className="md:hidden w-full">
         <button
           onClick={toggleDropdown}
-          className="w-full flex justify-between items-center px-4 py-3 text-sm font-medium bg-surface hairline rounded-xl"
+          className="w-full flex justify-between items-center px-4 py-3 text-sm font-medium bg-surface hairline rounded-lg"
         >
           <span>
             Models <span className="font-mono text-muted">{mounted ? `${selectedCount}/${allAiModel.length}` : ""}</span>
@@ -96,7 +96,7 @@ const Sidebar: React.FC = () => {
 
       {/* Model list - shown as dropdown on mobile, always visible on desktop */}
       <ul
-        className={`${isDropdownOpen ? "block" : "hidden"} md:block w-full mt-2 md:mt-0 bg-surface hairline rounded-xl overflow-hidden`}
+        className={`${isDropdownOpen ? "block" : "hidden"} md:block w-full mt-2 md:mt-0 bg-surface hairline rounded-lg overflow-hidden`}
       >
         {mounted ? (
           <>

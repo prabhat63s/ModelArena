@@ -15,14 +15,14 @@ const Suggestions: React.FC = () => {
     const dispatch = useDispatch();
 
     return (
-        <div className="mt-6 flex flex-wrap gap-2">
-            <span className="eyebrow self-center mr-1">Try</span>
+        <div className="mt-4 flex flex-wrap gap-2">
+            <span className="eyebrow self-center">Examples:</span>
             {SUGGESTIONS.map((text) => (
                 <button
                     key={text}
                     type="button"
                     onClick={() => dispatch(updatePromptText(text))}
-                    className="px-3 py-1.5 rounded-lg hairline text-sm text-muted hover:text-ink hover:bg-raised transition-colors cursor-pointer"
+                    className="px-2.5 py-1 rounded-md bg-raised text-sm text-muted hover:text-ink transition-colors cursor-pointer"
                 >
                     {text}
                 </button>

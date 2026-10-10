@@ -73,7 +73,7 @@ const ResponseSection: React.FC<Props> = (props: Props) => {
 
     return (
         <>
-            <div className='flex flex-col h-80 w-full bg-surface hairline rounded-xl overflow-hidden transition-colors hover:border-line/20' key={aiModal.id}>
+            <div className='flex flex-col min-h-40 max-h-96 w-full bg-surface hairline rounded-lg overflow-hidden transition-colors hover:border-line/20' key={aiModal.id}>
                 {/* model header */}
                 <div className='flex items-center justify-between gap-3 px-4 py-3 border-b border-line/10'>
                     <div className='flex items-center gap-3 min-w-0'>
@@ -88,7 +88,7 @@ const ResponseSection: React.FC<Props> = (props: Props) => {
                         />
                         <h3 className="font-semibold truncate">{aiModal.name}</h3>
                     </div>
-                    <span className="font-mono text-xs text-muted shrink-0">
+                    <span className="text-xs text-muted tabular-nums shrink-0">
                         {loading ? 'running…' : error ? 'failed' : response ? `${response.usage.total_tokens} tokens` : ''}
                     </span>
                 </div>
@@ -115,7 +115,6 @@ const ResponseSection: React.FC<Props> = (props: Props) => {
                             }}
                         >
                             Continue chat
-                            <span aria-hidden>→</span>
                         </Button>
                     </div>
                 )}
