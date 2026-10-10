@@ -29,7 +29,7 @@ const SearchSection: React.FC = () => {
     }
 
     return (
-        <div className="flex items-stretch border border-line/15 rounded-lg bg-surface focus-within:border-line/40 transition-colors">
+        <div className="flex items-stretch border border-line/15 rounded-lg bg-surface focus-within:border-accent/60 transition-colors">
             <ModelPicker />
             <Input
                 attrBtn={{

@@ -13,6 +13,7 @@
   --ink: 236 236 232;
   --muted: 148 148 142;
   --danger: 240 120 120;
+  --accent: 232 176 74;
 }
 
 @layer base {
@@ -60,6 +61,14 @@
 }
 
 @layer utilities {
+  /* faint dot grid that fades out toward the bottom */
+  .dot-grid {
+    background-image: radial-gradient(rgb(var(--line) / 0.12) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 95%);
+    mask-image: linear-gradient(to bottom, #000 30%, transparent 95%);
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

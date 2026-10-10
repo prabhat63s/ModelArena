@@ -16,6 +16,7 @@ export default {
         ink: token("ink"),
         muted: token("muted"),
         danger: token("danger"),
+        accent: token("accent"),
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],

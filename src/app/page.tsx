@@ -1,29 +1,90 @@
 // default library
 import type { NextPage } from "next"
+import Image from "next/image"
+
+// config
+import { allAiModel } from "@config/aiModelData"
 
 // search page
 import SearchSection from "@components/Page/HomePage/SearchSection"
+import Examples from "@components/Page/HomePage/Examples"
+
+const STEPS = [
+  {
+    title: "Choose your models",
+    text: "Open the selector in the prompt bar and tick one model or all of them.",
+  },
+  {
+    title: "Send one prompt",
+    text: "The same message goes to every selected model at the same time.",
+  },
+  {
+    title: "Compare the answers",
+    text: "Each model replies in its own card with its token count. Continue the chat with any one of them.",
+  },
+]
 
 const Home: NextPage = () => {
   return (
-    <div className="flex-1 flex flex-col justify-center py-10">
-      <h1 className="text-2xl font-semibold tracking-tight mb-1">Compare models</h1>
-      <p className="text-muted mb-6">Choose one or more models, write a prompt, and read the answers side by side.</p>
-      <SearchSection />
+    <div className="flex-1">
+      {/* hero */}
+      <section className="relative pt-16 pb-14 md:pt-24">
+        <div className="dot-grid absolute inset-x-0 -top-px h-96 pointer-events-none" aria-hidden></div>
 
-      <section className="mt-14 max-w-2xl">
-        <h2 className="text-sm font-medium mb-2">About ModelArena</h2>
-        <p className="text-sm text-muted leading-relaxed">
-          ModelArena is a small playground for trying the same prompt on several open-source language models
-          at once. Answers are fetched from the models through the Hugging Face Inference API, so you can see
-          how each one responds and how many tokens it used before deciding which to build with.
-        </p>
-        <ul className="mt-4 space-y-1.5 text-sm text-muted list-disc pl-5">
-          <li>Pick any combination of models from the selector in the prompt bar.</li>
-          <li>Each model answers in its own card, with the token count shown next to its name.</li>
-          <li>Use &ldquo;Continue chat&rdquo; on a card to keep talking to just that model.</li>
+        <div className="relative max-w-3xl">
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]">
+            Same prompt, different models.
+            <span className="block text-muted">See which one answers best.</span>
+          </h1>
+
+          <p className="mt-5 max-w-xl text-muted leading-relaxed">
+            ModelArena is a playground for running one prompt against several open-source language models
+            at once, so you can compare their answers and token usage before choosing one to build with.
+          </p>
+
+          <div className="mt-8">
+            <SearchSection />
+            <Examples />
+          </div>
+        </div>
+      </section>
+
+      {/* models */}
+      <section className="py-10 border-t border-line/10">
+        <div className="flex items-baseline justify-between mb-4">
+          <h2 className="font-medium">Available models</h2>
+          <span className="text-sm text-muted">{allAiModel.length} models via Hugging Face</span>
+        </div>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line/10 border border-line/10 rounded-lg overflow-hidden">
+          {allAiModel.map((m) => (
+            <li key={m.id} className="bg-bg p-4">
+              <Image src={m.image} alt="" width={24} height={24} className="rounded-full mb-3" />
+              <p className="font-medium">{m.name}</p>
+              <p className="mt-0.5 text-xs text-muted break-all">{m.model}</p>
+            </li>
+          ))}
         </ul>
       </section>
+
+      {/* how it works */}
+      <section id="how-it-works" className="py-10 border-t border-line/10 scroll-mt-14">
+        <h2 className="font-medium mb-4">How it works</h2>
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-px bg-line/10 border border-line/10 rounded-lg overflow-hidden">
+          {STEPS.map((step, i) => (
+            <li key={step.title} className="bg-bg p-5">
+              <span className="text-sm text-accent tabular-nums">0{i + 1}</span>
+              <p className="mt-2 font-medium">{step.title}</p>
+              <p className="mt-1 text-sm text-muted leading-relaxed">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* footer */}
+      <footer className="py-8 border-t border-line/10 text-sm text-muted flex flex-wrap justify-between gap-2">
+        <span>ModelArena</span>
+        <span>Built with Next.js and the Hugging Face Inference API</span>
+      </footer>
     </div>
   )
 }
